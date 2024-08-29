@@ -1,0 +1,48 @@
+<%- include('partials/_header') %>
+
+  <h1 class="text-center">CONSULTAS</h1>
+  <div class="container py-4 text-center">
+    <table class="table table-striped-columns">
+      <tr>
+        <thead class="bg bg-danger">
+          <td>NUMERO</td>
+          <td>MARCA</td>
+          <td>COLOR</td>
+          <td>AÑO</td>
+          <td>ACCIONES</td>
+      </tr>
+      <tbody>
+        <% if(data && data.length> 0) { %>
+          <% for (var i=0; i < data.length; i++) {%>
+            <tr>
+              <td>
+                <%= (i+1) %>
+              </td>
+              <td>
+                <%= data[i].marca %>
+              </td>
+              <td>
+                <%= data[i].color %>
+              </td>
+              <td>
+                <%= data[i].agno %>
+              </td>
+              <td>
+                <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Delete</a>
+                <a href="/update/<%= data[i].id %>" class="btn btn-info">Update</a>
+              </td>
+            </tr>
+            <% } %>
+              <% } else { %>
+                <tr>
+                  <td colspan="5">No se encontraron resultados.</td>
+                </tr>
+                <% } %>
+      </tbody>
+
+      </thead>
+    </table>
+  </div>
+  </div>
+
+  <%- include('partials/_footer') %>
